@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Comprobar sesi&oacute;n</title>
+		<link href="css/style.css" rel="stylesheet"/>
+	</head>
+	<body>
+		<fieldset>
+            <legend>Nuevo usuario</legend>
+            <form id="form" name="form" method="get" action="index.html">
+            	<table id="registro">
+		            <tr>
+		                <td><label class="obligatorio">Nombre y apellidos*:</label></td>
+		                <td><input type="text" class="texto" id='user'>
+		                <span class="error" aria-live="polite"></span>
+		            	</td>
+		            </tr>
+		            <tr>
+		            	<td><label class="obligatorio">Correo electr&oacute;nico*:</label></td>
+		            	<td><input type="email" class="texto" id='email'></td>
+		            </tr>
+		            <tr>
+		            	<td><label class="obligatorio">Contrase&ntilde;a*:</label></td>
+		            	<td><input type="password" class="texto" id='pass'></td>
+		            </tr>
+		            <tr>
+		            	<td><label class="obligatorio">Confirmar contrase&ntilde;a*:</label></td>
+		            	<td><input type="password" class="texto" id='confpass'></td>
+		            </tr>
+		            <tr>
+						<td><label class="etiqueta">Sexo:</label></td>
+						<td><select name="sex" id="sex">
+			                	<option value="0" selected="selected">Seleccione sexo</option>
+			                 	<option value="M">Mujer</option>
+			                  	<option value="H">Hombre</option>
+		                	</select>
+		                </td>
+		            </tr>
+		            <tr>
+		            	<td><label class="etiqueta">Fecha de nacimiento:</label></td>
+		            	<td><input type = "date" class="texto" id='dtbirth'></td>
+		            </tr>
+		            <tr>
+		            	<td><label class="etiqueta">Direcci&oacute;n:</label></td>
+		            	<td><input type = "text" class="texto" id='dire'></td>
+		            </tr>
+		            <tr>
+		            	<td><label class="etiqueta">Pa&iacute;s:</label></td>
+		            	<td><select  name="country" id="country">
+			                	<option value="0" selected="selected">Seleccione pa&iacute;s</option>
+			                   	<option value="E">Espa&ntilde;a</option>
+			                   	<option value="F">Francia</option>
+		                	</select>
+		                </td>
+		            <tr>
+		            <tr>
+		            	<td colspan=2><input type="checkbox" id="cbox0" value="cbox0" class="chkbx"> <label for="cbox0">Subcripci&oacute;n a la revista digital</label></td>
+		            <tr>
+		            <tr>
+		            	<td colspan=2><input type="checkbox" id="cbox1" value="cbox1" class="chkbx"> <label for="cbox1">Acepto las Condiciones de uso, Aviso de privacidad y Condiciones de Cookies y publicidad en Internet</label></td>
+		            <tr>
+		        </table>
+	            <input type="submit" name="enviar" id="enviar" value="Enviar"/>
+            </form>
+        </fieldset>
+		<script src="js/newuser.js"></script>
+	</body>
+</html>

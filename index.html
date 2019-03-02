@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Comprobar sesi&oacute;n</title>
+	</head>
+	<script type="text/javascript">
+		redireccion = function() {top.location.href = "crearUser.html"}
+		eliminar = function(name) { 
+			document.cookie = name + '=;expires=Thu, 01 Jan 1970 00:00:01 GMT;';	
+			top.location.href = "index.html";
+		}		  
+	</script>
+
+	<body>
+		<div id='divTit'>
+
+		</div>
+		<div id='divBut'>
+
+		</div>
+		<script src="js/checkcookies.js"></script>
+	</body>
+</html>
