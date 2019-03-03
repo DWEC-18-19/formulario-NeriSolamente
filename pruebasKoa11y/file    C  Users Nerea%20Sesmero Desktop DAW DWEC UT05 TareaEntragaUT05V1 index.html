@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Accessibility Standards - Koa11y</title>
+    <meta name="generator" content="Koa11y 3.0.0" />
+
+
+
+    <!--
+
+      Run this test on your site with Koa11y!
+
+      https://open-indy.github.io/Koa11y/
+
+    -->
+
+
+
+    <style>
+      @import url('https://fonts.googleapis.com/css?family=Lato:400,700,400italic');
+      *,
+      *:before,
+      *:after {
+        box-sizing: border-box;
+      }
+      html {
+        -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+      }
+      body {
+        background: #FFF;
+        margin-top: 17px;
+        color: #2C3E50;
+        font-family: 'Lato', 'Helvetica Neue', sans-serif;
+        font-size: 15px;
+        line-height: 1.42857143;
+      }
+      h1 {
+        display: inline-block;
+        margin: 21px 0px 20px;
+        font-size: 39px;
+        font-weight: 400;
+        word-break: break-all;
+      }
+      h4 {
+        margin: 0px;
+        color: #636F79;
+        font-size: 14.25px;
+      }
+      pre {
+        display: block;
+        background-color: #ECF0F1;
+        border: 1px solid #CCC;
+        border-radius: 4px;
+        margin: 0px 0px 10.5px;
+        padding: 10px;
+        color: #7B8A8B;
+        font-family: 'Menlo', 'Monaco', 'Consolas', 'Courier New', monospace;
+        font-size: 14px;
+        line-height: 1.42857143;
+        overflow: auto;
+        word-break: break-all;
+        word-wrap: break-word;
+      }
+      code {
+        white-space: pre-wrap;
+        word-break: break-all;
+      }
+      .container {
+        max-width: 900px;
+        width: 100%;
+        margin: 0px auto;
+        padding: 0px 15px;
+      }
+      .row {
+        margin-right: -15px;
+        margin-left: -15px;
+        clear: both;
+      }
+      .panel {
+        background-color: #FFF;
+        border: 1px solid transparent;
+        border-radius: 4px;
+        margin-bottom: 21px;
+        box-shadow: 0px 1px 1px rgba(0,0,0,0.05);
+      }
+      .panel-heading {
+        padding: 10px 15px;
+        border-bottom: 1px solid transparent;
+        border-top-right-radius: 3px;
+        border-top-left-radius: 3px;
+        color: #FFF;
+      }
+      .panel-body {
+        padding: 15px;
+      }
+      .panel-footer {
+        background-color: #ECF0F1;
+        border-top: 1px solid #ECF0F1;
+        border-bottom-right-radius: 3px;
+        border-bottom-left-radius: 3px;
+        padding: 10px 15px;
+      }
+      .panel-success { border-color: #18BC9C; }
+      .panel-danger  { border-color: #E74C3C; }
+      .panel-warning { border-color: #F39C12; }
+      .panel-primary { border-color: #2C3E50; }
+      .panel-success>.panel-heading { background-color: #18BC9C; border-color: #18BC9C; }
+      .panel-danger>.panel-heading  { background-color: #E74C3C; border-color: #E74C3C; }
+      .panel-warning>.panel-heading { background-color: #F39C12; border-color: #F39C12; }
+      .panel-primary>.panel-heading { background-color: #2C3E50; border-color: #2C3E50; }
+      .hide {
+        display: none;
+      }
+      .text-capitalize {
+        color: #8C8C8C;
+        font-size: 12px;
+        text-transform: uppercase;
+      }
+      #buttons {
+        display: inline-block;
+        margin-top: 30px;
+        float: right;
+      }
+      #buttons .disabled {
+        box-shadow: none;
+        cursor: pointer;
+        filter: alpha(opacity=65);
+        opacity: 0.65;
+        pointer-events: auto;
+      }
+      .panel-primary i {
+        margin: 0px 7px;
+      }
+      .btn {
+        display: inline-block;
+        background-image: none;
+        border: 2px solid transparent;
+        border-radius: 4px;
+        margin-bottom: 0px;
+        padding: 10px 15px;
+        font-size: 15px;
+        font-weight: normal;
+        line-height: 1.42857143;
+        text-align: center;
+        cursor: pointer;
+        touch-action: manipulation;
+        user-select: none;
+        white-space: nowrap;
+        vertical-align: middle;
+      }
+      .btn-sm {
+        border-radius: 3px;
+        padding: 6px 9px;
+        font-size: 13px;
+        line-height: 1.5;
+      }
+      .btn-danger {
+        background-color: #E74C3C;
+        border-color: #E74C3C;
+        color: #FFF;
+      }
+      .btn-warning {
+        background-color: #F39C12;
+        border-color: #F39C12;
+        color: #FFF;
+      }
+      .btn-primary {
+        background-color: #2C3E50;
+        border-color: #2C3E50;
+        color: #FFF;
+      }
+      .btn-danger,
+      .btn-warning {
+        margin-right: 3px;
+      }
+      .badge {
+        position: relative;
+        top: -1px;
+        display: inline-block;
+        min-width: 10px;
+        background-color: #FFF;
+        border-radius: 10px;
+        padding: 3px 7px;
+        color: #FFF;
+        font-size: 13px;
+        font-weight: bold;
+        line-height: 1;
+        text-align: center;
+        white-space: nowrap;
+        vertical-align: middle;
+      }
+      .btn-danger .badge {
+        color: #E74C3C;
+      }
+      .btn-warning .badge {
+        color: #F39C12;
+      }
+      .btn-primary .badge {
+        color: #2C3E50;
+      }
+      .glyphicon {
+        display: inline-block;
+        width: 20px;
+        height: 20px;
+        background-position: center center;
+        background-repeat: no-repeat;
+        background-size: contain;
+        vertical-align: top;
+      }
+      .glyphicon-ok {
+        background-image: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIzMiIgaGVpZ2h0PSIzMiIgdmlld0JveD0iMSAtNiAzMiAzMiI+PHBhdGggZmlsbD0iIzE4QkM5QyIgZD0iTS43NzMgMTMuNDkzbDExLjE3MyAxMS4yTDMzLjc1OSAyLjgyNmwtNS42NTMtNS42NTNMMTEuOTE5IDEzLjM2IDYuNDI2IDcuODR6Ii8+PC9zdmc+');
+      }
+      .glyphicon-remove {
+        background-image: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIzMiIgaGVpZ2h0PSIzMiIgdmlld0JveD0iMCAtNiAzMiAzMiI+PHBhdGggZmlsbD0iI0U3NEMzQyIgZD0iTTIuODI3IDE3LjEybDcuNTItNy41Mi03LjUyLTcuNTJMOC40OC0zLjU3MyAxNiAzLjk0N2w3LjUyLTcuNTIgNS42NTMgNS42NTMtNy41MiA3LjUyIDcuNTIgNy41Mi01LjY1MyA1LjY1My03LjUyLTcuNTItNy41MiA3LjUyeiIvPjwvc3ZnPg==');
+      }
+      .glyphicon-ban-circle {
+        background-image: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIzMiIgaGVpZ2h0PSIzMiIgdmlld0JveD0iMCAtNiAzMiAzMiI+PHBhdGggZmlsbD0iI0YzOUMxMiIgZD0iTS4xMDcgOS42cTAtNC4zMiAyLjEzMy03Ljk3M1Q4LjAyNy00LjE2IDE2LTYuMjkzdDcuOTczIDIuMTMzIDUuNzg3IDUuNzg3VDMxLjg5MyA5LjZ0LTIuMTMzIDcuOTczLTUuNzg3IDUuNzg3VDE2IDI1LjQ5MyA4LjAyNyAyMy4zNiAyLjI0IDE3LjU3My4xMDcgOS42em00Ljg1MyAwcTAgMy4wNjcgMS42NTMgNS43MzNMMjEuNzYuMjEzUTE5LjA5My0xLjQ0IDE2LTEuNDRxLTQuNTYgMC03LjggMy4yNFQ0Ljk2IDkuNnptNS40NjcgOS40NjdRMTMuMDE0IDIwLjY0IDE2IDIwLjY0cTQuNTYgMCA3LjgtMy4yNHQzLjI0LTcuOHEwLTIuOTg3LTEuNTczLTUuNTczeiIvPjwvc3ZnPg==');
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container" role="main">
+          <div class="row">
+      <span id="buttons"><button class="btn btn-sm btn-warning">Warnings <span class="badge">0</span></button><button class="btn btn-sm btn-primary">Notices <span class="badge">2</span></button></span>
+      <h1>file:///C:/Users/Nerea%20Sesmero/Desktop/DAW/DWEC/UT05/TareaEntragaUT05V1/index.html</h1>
+    </div>
+
+    <div class="row"><div class="panel panel-primary">
+<div class="panel-heading">WCAG2AAA.Principle2.Guideline2_4.2_4_2.H25.2</div>
+<div class="panel-body">
+<strong class="text-capitalize">notice:</strong> Check that the title element describes the document.<br /><br />
+<pre><code>&lt;title>Comprobar sesión&lt;/title></code></pre>
+</div>
+<div class="panel-footer text-sm"><h4><small>html > head > title</small></h4></div>
+</div>
+<div class="panel panel-primary">
+<div class="panel-heading">WCAG2AAA.Principle3.Guideline3_2.3_2_1.G107</div>
+<div class="panel-body">
+<strong class="text-capitalize">notice:</strong> Check that a change of context does not occur when this input field receives focus.<br /><br />
+<pre><code>&lt;input type="button" value="Eliminar cookies" onclick="eliminar(&quot;user&quot;)"></code></pre>
+</div>
+<div class="panel-footer text-sm"><h4><small>#divTit > input</small></h4></div>
+</div>
+</div>
+
+    </div>
+    <script>
+      var errorButton = document.querySelectorAll('.btn-danger')[0];
+      var warningButton = document.querySelectorAll('.btn-warning')[0];
+      var noticeButton = document.querySelectorAll('.btn-primary')[0];
+      var allErrors = document.querySelectorAll('.panel-danger');
+      var allWarnings = document.querySelectorAll('.panel-warning');
+      var allNotices = document.querySelectorAll('.panel-primary');
+
+      function hideAll (arr) {
+        for (var i = 0; i < arr.length; i++) {
+          arr[i].classList.add('hide');
+        }
+      }
+
+      function showAll (arr) {
+        for (var i = 0; i < arr.length; i++) {
+          arr[i].classList.remove('hide');
+        }
+      }
+
+      errorButton.addEventListener('click', function () {
+        if (this.classList.contains('disabled')) {
+          this.classList.remove('disabled');
+          showAll(allErrors);
+        } else {
+          this.classList.add('disabled');
+          hideAll(allErrors);
+        }
+      });
+      warningButton.addEventListener('click', function () {
+        if (this.classList.contains('disabled')) {
+          this.classList.remove('disabled');
+          showAll(allWarnings);
+        } else {
+          this.classList.add('disabled');
+          hideAll(allWarnings);
+        }
+      });
+      noticeButton.addEventListener('click', function () {
+        if (this.classList.contains('disabled')) {
+          this.classList.remove('disabled');
+          showAll(allNotices);
+        } else {
+          this.classList.add('disabled');
+          hideAll(allNotices);
+        }
+      });
+    </script>
+  </body>
+</html>
