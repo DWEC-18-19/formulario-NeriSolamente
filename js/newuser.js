@@ -282,8 +282,7 @@ function addClass(el, cls) {
 
 /* Función para crear cookies */
 
-function crearCookie(user, vUser, pass,vPass, expiredays)
-{
+function crearCookie(user, vUser, pass,vPass, expiredays){
     console.log("aaaa");
     var exdate = new Date();
     exdate.setDate(exdate.getDate() + expiredays);

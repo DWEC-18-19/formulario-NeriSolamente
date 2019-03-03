@@ -3,6 +3,7 @@
 
 /* Declaración de variables */
 let isAlerts = [user];
+let  nullTemplate = /^\s*$/; //Espacio en blanco
 let error = 0;
 
 window.onload = iniciar;
@@ -156,8 +157,7 @@ function addClass(el, cls) {
 
 /* Comprobación de cookies */
 
-function obtenerCookie(c_name)
-{
+function obtenerCookie(c_name){
     //localStorage permite acceder al objeto local Storage
     if(typeof localStorage != "") {//comprueba que el navegador tenga localstorage
         return localStorage.getItem(c_name); 
