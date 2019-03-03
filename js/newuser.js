@@ -41,6 +41,8 @@ function iniciar(){
                 event.preventDefault();//no carga la pagina si hay errores
             }else{
                 //crea la cookie si los datos  obligatorios son correctos
+                console.log(user.value);
+                console.log(pass.value);
                 crearCookie("user", user.value,"pass", pass.value, 1);
                 console.log("cookie creada");
             }
@@ -137,6 +139,7 @@ function validatePass(){
             console.log("Ok");
             hideAlertMessage(pass);
             pass.parentNode.className = "";
+            console.log(pass.value);
             error = 0;
         } else { //Si la validación es correcta
             console.log("no ok");
@@ -163,7 +166,7 @@ function confirmPass(){
                 error = 0;
             } else { //Si la validación es correcta
                 console.log("no ok");
-                showAlertMessage(confpass, 'Debe tener al menos 8 caracteres y al menos una letra en mín\u00FAscula, una en may\u00FAscula, un n\u00FAmero y un carácter especial.');
+                showAlertMessage(confpass, 'Debe tener al menos 8 caracteres y al menos una letra en min\u00FAscula, una en may\u00FAscula, un n\u00FAmero y un carácter especial.');
                 error = 1;
             }
         }
@@ -279,13 +282,22 @@ function addClass(el, cls) {
 
 /* Función para crear cookies */
 
-function crearCookie(user, vUser,pass,vPass, diasexpiracion) {
-    console.log("Crear cookie");
-    var d = new Date();
-    d.setTime(d.getTime() + (diasexpiracion*24*60*60*1000));
-    var expires = "expires="+d.toUTCString();
-    document.cookie = user + "=" + vUser + "; " + pass + "=" + vPass + "; " + expires;
+function crearCookie(user, vUser, pass,vPass, expiredays)
+{
+    console.log("aaaa");
+    var exdate = new Date();
+    exdate.setDate(exdate.getDate() + expiredays);
+    //localStorage permite acceder al objeto local Storage
 
+    if (typeof localStorage != "undefined") { //comprueba que el navegador tenga localstorage
+        alert("This place has local storage!");
+        //añade los valores que se usan como cookies
+        localStorage.setItem(user, vUser);
+        localStorage.setItem(pass, vPass);
+    }else { //si no tiene acceso crea las cookies con document.cookie
+        alert("No local storage here");
+       document.cookie = user + "=" + vUser + "; " + pass + "=" + vPass + "; " + expires;
+    }
     alert("Se ha realizado el registro correctamente.");
 
     top.location.href = "index.html"; //vuelve a cargar la página principal con los datos guardados

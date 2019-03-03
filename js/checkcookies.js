@@ -1,24 +1,25 @@
 function CheckCookies(){
-
     this.comprobarCookie('user');
 }
 
-
-CheckCookies.prototype.obtenerCookie = function(clave) {
-    var name = clave + "=";
-    var ca = document.cookie.split(';');
-    for(var i=0; i<ca.length; i++) {
-        var c = ca[i];
-        while (c.charAt(0)==' ') c = c.substring(1);
-        if (c.indexOf(name) == 0) return c.substring(name.length,c.length);
+CheckCookies.prototype.obtenerCookie = function(c_name)
+{
+    if(typeof localStorage != "undefined"){
+        return localStorage.getItem(c_name);
+    } else {
+        var c_start = document.cookie.indexOf(c_name + "=");
+        if (document.cookie.length > 0) {
+            if (c_start !== -1) {
+                return getCookieSubstring(c_start, c_name);
+            }
+        }
+        return "";
     }
-    return "";
 }
 
 CheckCookies.prototype.comprobarCookie = function(clave) {
     console.log("comprueba cookie");
     var clave = this.obtenerCookie(clave);
-    console.log(clave);
     if (clave!="") {// La cookie existe.
         console.log("existe")
         div = document.getElementById('divTit');
@@ -31,9 +32,6 @@ CheckCookies.prototype.comprobarCookie = function(clave) {
         deleteCookie.setAttribute('value','Eliminar cookies');
         deleteCookie.setAttribute('onclick','eliminar("user")');
         div.appendChild(deleteCookie); 
-
-       //newlink = document.createElement('h2');
-        //newlink.setAttribute('value','Bienvenido');
     }else{
         console.log("no existe")
         div = document.getElementById('divBut');

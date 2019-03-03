@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Comprobar sesi&oacute;n</title>
+		<link href="css/style.css" rel="stylesheet"/>
+	</head>
+	<body>
+		<fieldset>
+            <legend>Iniciar Sesi&oacute;n</legend>
+            <form id="form" name="form" method="get">
+            	<table id="registro">
+		            <tr>
+		                <td><label class="obligatorio">Nombre y apellidos:</label></td>
+		                <td><input type="text" class="texto" id='user'></td>
+		            </tr>
+		            <tr>
+		            	<td><label class="obligatorio">Contrase&ntilde;a*:</label></td>
+		            	<td><input type="password" class="texto" id='pass'></td>
+		            </tr>
+		        </table>
+		    </form>
+		    <input type="submit" name="aceptar" id="aceptar" value="Aceptar"/>
+		    <input type="submit" name="newUser" id="newUser" value="Nuevo Usuario"/>
+		</fieldset>
+		<script src="js/login.js"></script>
+	</body>
+</html>
